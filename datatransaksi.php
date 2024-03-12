@@ -30,26 +30,31 @@ if (isset($_POST['submit'])) {
     echo "Tanggal Transaksi : $tanggal_transaksi <br>";
     echo "Customer : $customer <br>";
 
-    $total1 = 0;
-    $total2 = 0;
-    $total3 = 0;
+    // Buat tabel untuk menampilkan data transaksi
+    echo "<table border='1'>";
+    echo "<tr><th>No</th><th>Nama Barang</th><th>Jumlah Beli</th><th>Harga Satuan</th><th>Total Harga</th></tr>";
+    $subtotal = 0;
 
     foreach ($tokosembako as $barang) {
         if ($barang['Nama Barang'] == $barang1) {
             $total1 = $jumlahbeli1 * $barang['Harga'];
-            echo "Barang 1 : $barang1 - Jumlah Beli: $jumlahbeli1 - Total: $total1 <br>";
+            echo "<tr><td>{$barang['No']}</td><td>$barang1</td><td>$jumlahbeli1</td><td>{$barang['Harga']}</td><td>$total1</td></tr>";
+            $subtotal += $total1;
         }
         if ($barang['Nama Barang'] == $barang2) {
             $total2 = $jumlahbeli2 * $barang['Harga'];
-            echo "Barang 2 : $barang2 - Jumlah Beli: $jumlahbeli2 - Total: $total2 <br>";
+            echo "<tr><td>{$barang['No']}</td><td>$barang2</td><td>$jumlahbeli2</td><td>{$barang['Harga']}</td><td>$total2</td></tr>";
+            $subtotal += $total2;
         }
         if ($barang['Nama Barang'] == $barang3) {
             $total3 = $jumlahbeli3 * $barang['Harga'];
-            echo "Barang 3 : $barang3 - Jumlah Beli: $jumlahbeli3 - Total: $total3 <br>";
+            echo "<tr><td>{$barang['No']}</td><td>$barang3</td><td>$jumlahbeli3</td><td>{$barang['Harga']}</td><td>$total3</td></tr>";
+            $subtotal += $total3;
         }
     }
 
-    $subtotal = $total1 + $total2 + $total3;
+    echo "</table>";
+
     echo "Subtotal: $subtotal <br>";
     echo "Punya Kartu Member? : $kartu_member <br>";
     echo "Uang Pembayaran : $uang_pembayaran <br>";
