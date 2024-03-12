@@ -29,9 +29,28 @@ if (isset($_POST['submit'])) {
     echo "Kode Transaksi :  $kode_transaksi <br>";
     echo "Tanggal Transaksi : $tanggal_transaksi <br>";
     echo "Customer : $customer <br>";
-    echo "Barang 1 : $barang1 - Jumlah Beli: $jumlahbeli1 <br>";
-    echo "Barang 2 : $barang2 - Jumlah Beli: $jumlahbeli2 <br>";
-    echo "Barang 3 : $barang3 - Jumlah Beli: $jumlahbeli3 <br>";
+
+    $total1 = 0;
+    $total2 = 0;
+    $total3 = 0;
+
+    foreach ($tokosembako as $barang) {
+        if ($barang['Nama Barang'] == $barang1) {
+            $total1 = $jumlahbeli1 * $barang['Harga'];
+            echo "Barang 1 : $barang1 - Jumlah Beli: $jumlahbeli1 - Total: $total1 <br>";
+        }
+        if ($barang['Nama Barang'] == $barang2) {
+            $total2 = $jumlahbeli2 * $barang['Harga'];
+            echo "Barang 2 : $barang2 - Jumlah Beli: $jumlahbeli2 - Total: $total2 <br>";
+        }
+        if ($barang['Nama Barang'] == $barang3) {
+            $total3 = $jumlahbeli3 * $barang['Harga'];
+            echo "Barang 3 : $barang3 - Jumlah Beli: $jumlahbeli3 - Total: $total3 <br>";
+        }
+    }
+
+    $subtotal = $total1 + $total2 + $total3;
+    echo "Subtotal: $subtotal <br>";
     echo "Punya Kartu Member? : $kartu_member <br>";
     echo "Uang Pembayaran : $uang_pembayaran <br>";
 }
