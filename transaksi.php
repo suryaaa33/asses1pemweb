@@ -14,7 +14,7 @@ $tokosembako = array(
     array("No" => 10, "Nama Barang" => "Baterai", "Harga" => 16000),
 );
 ?>
-    <h2>Halo, silahkan input data</h2>
+    <h2>Halo, silahkan input data Customer</h2>
     <form action="datatransaksi.php" method="post">
         Kode Transaksi: <input type="text" name="kodetransaksi"><br>
         Tanggal Transaksi: <input type="date" name="tgltransaksi"><br>
